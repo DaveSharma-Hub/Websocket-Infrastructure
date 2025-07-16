@@ -1,6 +1,5 @@
 resource "aws_sns_topic" "server_to_client_sns" {
   name = "send_to_client_sns_topic"
-  fifo_topic                  = true
 }
 
 resource "aws_sns_topic_subscription" "sns_to_lambda" {

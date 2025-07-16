@@ -6,8 +6,8 @@ const ServerPublishNewMessage =
     const snsClient = new SNSClient({
       region: region,
       credentials: {
-        accessKey: accessKey,
-        secretKey: secretKey,
+        accessKeyId: accessKey,
+        secretAccessKey: secretKey,
       },
     });
     const input = {

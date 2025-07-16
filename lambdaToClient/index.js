@@ -6,9 +6,10 @@ import {
 const gatewayClient = new ApiGatewayManagementApiClient({
     region: process.env.AWS_REGION,
     credentials: {
-        accessKey: process.env.ACCESS_KEY,
-        secretKey: process.env.SECRET_KEY
-    }
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_KEY
+    },
+    endpoint: process.env.WS_API_GW_ENDPOINT
 });
 
 const sendToClient = async({customEventType, clientMessage, connectionId}) => {
@@ -38,4 +39,7 @@ export const handler = async(event) => {
         });
     });
     await Promise.all(requests);
+    return {
+        statusCode:200
+    };
 }

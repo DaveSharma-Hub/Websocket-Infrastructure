@@ -7,7 +7,7 @@ const endpoints = {
 };
 
 export const handler = async(event) => {
-    const { requestContext, headers, body: ingressBody } = event;
+    const { requestContext, body: ingressBody } = event;
     const { connectionId, eventType } = requestContext;
     if(!eventType in endpoints){
         return;
@@ -23,7 +23,9 @@ export const handler = async(event) => {
         eventType: eventType,
         connectionId: connectionId,
         body: body
-    }, {
-        headers
     });
+
+    return {
+        statusCode: 200
+    }
 }
